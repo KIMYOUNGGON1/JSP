@@ -26,30 +26,58 @@
 			<div class="clo-6"></div>
 			<form>
 				<div class="form-group">
-					<label for="input1">이름</label> <input name="name" class="form-control"
-						id="input1">
+					<label for="input1">이름</label> <input name="name"
+						class="form-control" id="input1">
 				</div>
-				
+
 				<div class="form-check">
 					<input name="fruit" value="berry" type="checkbox" id="check1">
-					<label class="form-chekc-label" for="check1">
-					딸기
-					</label>
+					<label class="form-chekc-label" for="check1"> 딸기 </label>
 				</div>
-				
+
 				<div class="form-check">
 					<input name="fruit" value="apple" type="checkbox" ud="check2">
-					<label class = "form-check-label" for="check2">
-					사과
-					</label>
+					<label class="form-check-label" for="check2"> 사과 </label>
 				</div>
-				
-				
+
+
 				<input type="submit" class="btn btn-primary" value="전송">
 			</form>
 
 		</div>
 	</div>
-	
+
+	<hr>
+
+	<div class="container">
+		<div class="row jusify-content-center">
+			<div class="col-6">
+				<p>
+					name :
+					<%=request.getParameter("name")%>
+				</p>
+
+				<p>
+					<%-- fruit1 :
+					<%=request.getParameterValues("fruit")[0]%>
+ --%>					
+					<% 
+					String[] fruits = request.getParameterValues("fruit");
+					
+					if(fruits != null && fruits.length>0){
+						for (int i = 0; i <fruits.length; i++) {
+						out.print("<p>");
+						out.print("fruit" + (i+1) + ":" + fruits[i]);
+						out.print("</p>");
+						}
+					}
+					%>
+					
+				</p>
+
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>
