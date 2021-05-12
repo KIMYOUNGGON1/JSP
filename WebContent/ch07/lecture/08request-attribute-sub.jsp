@@ -1,19 +1,17 @@
 <%@ page  contentType="text/html; charset=UTF-8"%>
 <%@ page import = "java.util.*" %>
+<%@ page import = "ch07.User" %>
 
-<%request.setCharacterEncoding("utf-8"); %>
+<% 
+User member = (User) request.getAttribute("member");
+String name = member.getName();
+int age = member.getAge();
+String address = member.getAddress();
+%>
 
-<!DOCTYPE html>
-<html>
-<head>
-
-<%@ include file = "/WEB-INF/subModules/bootstrapHeader.jsp" %>
-
-<title>Insert title here</title>
-</head>
-<body>
-<div class = "container">
+<div>
+	이름 : <%=member.getName() %> <br>
+	나이 : <%=member.getAge() %> <br>
+	주소 : <%=member.getAddress() %> <br>
 	
 </div>
-</body>
-</html>
