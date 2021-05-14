@@ -5,7 +5,7 @@
 
 <%
 	String memberId = (String)session.getAttribute("MEMBERID");
-	boolean login = memberId ==null?false:true;
+	boolean login = memberId != null;
 %>
 
 <!DOCTYPE html>

@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class = "container">
-	<form action="<%=request.getContextPath() %>/textbook/sessionLogin.jsp" method = "post">
+	<form action="<%=request.getContextPath() %>/ch10/textbook/sessionLogin.jsp" method = "post">
 	아이디 <input type="text" name="id" size="10">
 	암호 <input type="password" name="password" size = "10">
 	<input type="submit" value="로그인">	
