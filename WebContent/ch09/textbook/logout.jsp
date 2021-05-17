@@ -5,9 +5,9 @@
 <%request.setCharacterEncoding("utf-8"); %>
 
 <%
-	response.addCookie(Cookies.createCookie("name", "최범균"));
-	response.addCookie(Cookies.createCookie("id", "madvirus", request.getContextPath(), -1));
-	%>
+	response.addCookie(Cookies.createCookie("AUTH", "", "/", 0)
+			);
+%>
 
 <!DOCTYPE html>
 <html>
@@ -15,11 +15,11 @@
 
 <%@ include file = "/WEB-INF/subModules/bootstrapHeader.jsp" %>
 
-<title>Cookies 사용 예</title>
+<title>로ㄱ아웃</title>
 </head>
 <body>
 <div class = "container">
-	Cookies를 사용하여 쿠키 생성
+	로그아웃하였습니다.
 </div>
 </body>
 </html>

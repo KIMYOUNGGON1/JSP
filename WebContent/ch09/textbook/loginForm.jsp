@@ -1,13 +1,7 @@
-<%@page import="util.Cookies"%>
 <%@ page  contentType="text/html; charset=UTF-8"%>
 <%@ page import = "java.util.*" %>
 
 <%request.setCharacterEncoding("utf-8"); %>
-
-<%
-	response.addCookie(Cookies.createCookie("name", "최범균"));
-	response.addCookie(Cookies.createCookie("id", "madvirus", request.getContextPath(), -1));
-	%>
 
 <!DOCTYPE html>
 <html>
@@ -15,11 +9,17 @@
 
 <%@ include file = "/WEB-INF/subModules/bootstrapHeader.jsp" %>
 
-<title>Cookies 사용 예</title>
+<title>로그인폼</title>
 </head>
 <body>
 <div class = "container">
-	Cookies를 사용하여 쿠키 생성
+
+	<form action = "<%=request.getContextPath() %>/ch09/textbook/login.jsp" method="post">
+	
+	아이디 <input type = "text" name = "id" size="10">
+	암호 <input type = "password" name = "password" size="10">
+	<input type="submit" value="로그인">
+	</form>
 </div>
 </body>
 </html>
