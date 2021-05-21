@@ -26,8 +26,7 @@
 <div class = "container">
 	${attr1 } <br>
 	${pageScope.attr1 } <br>
-	${attr2 } <br>
-	${attr2 } <br>
+
 	
 	
 </div>
