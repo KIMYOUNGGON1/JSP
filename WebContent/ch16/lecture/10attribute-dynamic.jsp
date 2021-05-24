@@ -17,17 +17,7 @@
 </head>
 <body>
 <div class = "container">
-
-<%
-	List<String> list = new ArrayList<>();
-	list.add("Home");
-	list.add("Menu1");
-	list.add("Menu2");
-	list.add("Menu3");
-	pageContext.setAttribute("list", list);
-%>
-
-	<my:navbar01 menus="${list }"/>
+	<my:dynamic req="abc" attr1 = "value1" attr2 = "value2" attr3 = "value3" />
 </div>
 </body>
 </html>

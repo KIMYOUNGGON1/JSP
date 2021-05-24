@@ -13,21 +13,13 @@
 
 <%@ include file = "/WEB-INF/subModules/bootstrapHeader.jsp" %>
 
-<title>Insert title here</title>
+<title>select 태그 사용</title>
 </head>
 <body>
 <div class = "container">
-
-<%
-	List<String> list = new ArrayList<>();
-	list.add("Home");
-	list.add("Menu1");
-	list.add("Menu2");
-	list.add("Menu3");
-	pageContext.setAttribute("list", list);
-%>
-
-	<my:navbar01 menus="${list }"/>
+	<tf:select name="code" rgb="RGB 모드" wb="흑백 모드" />
+	
+	<tf:select name="genre" rock="락" ballad="발라드" metal="메탈"/>
 </div>
 </body>
 </html>
