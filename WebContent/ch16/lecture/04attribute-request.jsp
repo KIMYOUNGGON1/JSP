@@ -1,9 +1,9 @@
-<%@ page  body-Content contentType="text/html; charset=UTF-8"%>
+<%@ page  contentType="text/html; charset=UTF-8"%>
 <%@ page import = "java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="my" tagdir="/WEB-INF/tags/ch16/textbook" %>
-
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags/ch16/lecture" %>
+<%@ taglib prefix="tf" tagdir="/WEB-INF/tags/ch16/textbook"%>
 
 <%request.setCharacterEncoding("utf-8"); %>
 
@@ -18,8 +18,13 @@
 <body>
 <div class = "container">
 	
-	오늘은 <b><my:now/></b>입니다.
-	
+	<%
+	pageContext.setAttribute("pageAttr1", "pageVal1");
+	request.setAttribute("startPage", "11");
+	request.setAttribute("endPage", "20");
+	%>
+
+	<my:pagenation01 start="1" end="10"/>
 </div>
 </body>
 </html>
