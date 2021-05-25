@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Servlet07Path
+ * Servlet implementation class Servlet08Extension
  */
-@WebServlet("/Servlet07Path/*")
-public class Servlet07Path extends HttpServlet {
+@WebServlet("*.ext")
+public class Servlet08Extension extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Servlet07Path() {
+    public Servlet08Extension() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +26,7 @@ public class Servlet07Path extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("servlet07 doGet method...");
-		response.getWriter().print("doGet method...");
+		response.getWriter().print("Servlet08 doGet...");
 	}
 
 	/**

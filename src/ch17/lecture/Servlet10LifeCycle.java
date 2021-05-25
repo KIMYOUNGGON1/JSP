@@ -8,26 +8,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Servlet07Path
+ * Servlet implementation class Servlet10LifeCycle
  */
-@WebServlet("/Servlet07Path/*")
-public class Servlet07Path extends HttpServlet {
+@WebServlet("/Servlet10LifeCycle")
+public class Servlet10LifeCycle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Servlet07Path() {
+    public Servlet10LifeCycle() {
         super();
         // TODO Auto-generated constructor stub
     }
 
+    @Override
+    public void init() throws ServletException {
+    	// TODO Auto-generated method stub
+    	super.init();
+    	
+    	System.out.println("doGet/doPost 메소드보다 먼저 실행되어야 하는 코드");
+    	System.out.println("한 번만 실행됨.");
+    }
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("servlet07 doGet method...");
-		response.getWriter().print("doGet method...");
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
