@@ -1,6 +1,8 @@
 package ch17.lecture;
 
 import java.io.IOException;
+
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,26 +10,39 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Servelt09LifeCycle
+ * Servlet implementation class Servlet13InitParam
  */
-@WebServlet("/Servelt09LifeCycle")
-public class Servlt09LifeCycle extends HttpServlet {
+//@WebServlet("/Servlet13InitParam")
+public class Servlet13InitParam extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Servlt09LifeCycle() {
+    public Servlet13InitParam() {
         super();
         // TODO Auto-generated constructor stub
-        System.out.println("Servlet 09 생성자 실행");
     }
 
+    @Override
+    public void init() throws ServletException {
+    	// TODO Auto-generated method stub
+    	super.init();
+    	
+    	ServletConfig config = getServletConfig();
+    	String name = config.getInitParameter("name");
+    	String home = config.getInitParameter("home");
+    	
+    	System.out.println(name);
+    	System.out.println(home);
+    }
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Servlet 09 doGet method...");
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
