@@ -16,7 +16,7 @@
   
   <servlet>
   	<servlet-name>
-  	 	servlet03
+  	 	servlet3
   	</servlet-name>
   	<servlet-class>
   	 	ch17.lecture.Servlet03  	
