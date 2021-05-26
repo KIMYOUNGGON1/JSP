@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class BoardListServlet
  */
-@WebServlet("/sample/list")
+@WebServlet("/sample1/list")
 public class BoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
