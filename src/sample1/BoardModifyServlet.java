@@ -39,9 +39,12 @@ public class BoardModifyServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
 		String index = request.getParameter("index");
 		String title = request.getParameter("title");
 		String body = request.getParameter("body");
+		String writer = request.getParameter("writer");
 		
 		ServletContext application = request.getServletContext();
 		java.util.List<Board> list = (java.util.List<Board>) application.getAttribute("boards");
@@ -50,6 +53,7 @@ public class BoardModifyServlet extends HttpServlet {
 		Board board = list.get(i);
 		board.setTitle(title);
 		board.setBody(body);
+		board.setWriter(writer);
 		
 		String path = request.getContextPath() + "/sample1/detail?index=" + index;
 		response.sendRedirect(path);
