@@ -1,12 +1,14 @@
 package ch14;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,16 +17,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class JDBC05Servlet
+ * Servlet implementation class JDBC06Servlet
  */
-@WebServlet("/JDBC05Servlet")
-public class JDBC05Servlet extends HttpServlet {
+@WebServlet("/JDBC06Servlet")
+public class JDBC06Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JDBC05Servlet() {
+    public JDBC06Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,11 +35,24 @@ public class JDBC05Servlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		executeJDBC();
-		response.getWriter().print("<h1>JDBC05</h1>");
+		List<String> list = executeJDBC();
+		
+		response.setContentType("text/html; charset = utf-8");
+		PrintWriter out = response.getWriter();
+		out.print("<ul>");
+		
+		for (String city : list) {
+			out.print("<li>");
+			out.print(city);
+			out.print("</li>");
+		}
+		
+		out.print("</ul>");
 	}
+
+private List<String> executeJDBC() {
 	
-private void executeJDBC() {
+		List<String> cities = new ArrayList<>();
 		
 		String sql = "SELECT DISTINCT City "
 				+ "FROM Customers "
@@ -73,8 +88,9 @@ private void executeJDBC() {
 		    	
 		    	String city = rs.getString(1);
 		    	
+//		    	System.out.println(city);
+		    	cities.add(city);
 		    	
-		    	System.out.println(city);
 		    }		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -106,7 +122,11 @@ private void executeJDBC() {
 			}
 			
 		}
+		
+		return cities;
 	}
+
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
