@@ -14,35 +14,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class JDBC01Servlet
+ * Servlet implementation class JDBC02Servlet
  */
-@WebServlet("/JDBC01Servlet")
-public class JDBC01Servlet extends HttpServlet {
+@WebServlet("/JDBC02Servlet")
+public class JDBC02Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public JDBC02Servlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public JDBC01Servlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		executeJDBC();
-
-		response.getWriter().print("<h1>jdbc01</h1>");
+		response.getWriter().print("<h1>jdbc02</h1>");
 	}
 
 	private void executeJDBC() {
 		
-		String sql = "SELECT CustomerName FROM Customers WHERE CustomerID = 1";
+		String sql = "SELECT CustomerName, City FROM Customers WHERE CustomerID = 1";
 
 		
 		String url = "jdbc:mysql://13.209.84.120/test"; //본인 ip
@@ -71,7 +67,10 @@ public class JDBC01Servlet extends HttpServlet {
 		    // 결과 탐색
 		    if ( rs.next()) {
 		    	String name = rs.getString(1);
-		    	System.out.println(name);			
+		    	String city = rs.getString(2);
+		    	
+		    	System.out.println(name);
+		    	System.out.println(city);
 		    }		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -104,13 +103,11 @@ public class JDBC01Servlet extends HttpServlet {
 			
 		}
 	}
-
+	
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
