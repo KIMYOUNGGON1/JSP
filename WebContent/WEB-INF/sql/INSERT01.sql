@@ -27,6 +27,34 @@ VALUES
 
 -- 테이블 설명 보기
 DESC Customers;
+DESC Employees;
+
+SELECT * FROM Employees
+ORDER BY EmployeeID DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
