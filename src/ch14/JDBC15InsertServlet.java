@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,19 +12,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ch14.bean.Customer;
+import ch14.bean.Employee;
 
 /**
- * Servlet implementation class JDBC14InsertServlet
+ * Servlet implementation class JDBC15InsertServlet
  */
-@WebServlet("/JDBC14InsertServlet")
-public class JDBC14InsertServlet extends HttpServlet {
+@WebServlet("/JDBC15InsertServlet")
+public class JDBC15InsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JDBC14InsertServlet() {
+    public JDBC15InsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,8 +33,8 @@ public class JDBC14InsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String path = "/ch14/jdbc14form.jsp";
+
+		String path = "/ch14/jdbc15form.jsp";
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
@@ -47,43 +44,29 @@ public class JDBC14InsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		String name = request.getParameter("name");
-		String contactName = request.getParameter("contactName");
-		String address = request.getParameter("address");
-		String city = request.getParameter("city");
-		String postalCode = request.getParameter("postalCode");
-		String country = request.getParameter("country");
+		Employee employee = new Employee();
+		employee.setLastName(request.getParameter("lastName"));
+		employee.setFirstName(request.getParameter("firstName"));
+		employee.setNotes(request.getParameter("notes"));
 		
-		Customer customer = new Customer();
-		customer.setName(name);
-		customer.setContactName(contactName);
-		customer.setAddress(address);
-		customer.setCity(city);
-		customer.setPostalCode(postalCode);
-		customer.setCountry(country);
-		
-//		executeJDBC(name, contactName, address, city, postalCode, country);
-		executeJDBC(customer);
+		executeJDBC(employee);
 		
 		doGet(request, response);
 	}
 	
-	private void executeJDBC(Customer customer) {
+	private void executeJDBC(Employee employee) {
 
-		List<Customer> list = new ArrayList<>(); // 리턴할 객체
-		
-		String sql = "INSERT INTO Customers " + 
-				"(CustomerName, ContactName, Address, City, PostalCode, Country) " + 
+		String sql = "INSERT INTO Employees " + 
+				"(LastName, FirstName, Notes) " + 
 				"VALUES " + 
-				"(?, ?, ?, ?, ?, ?)" ;
+				"(?, ?, ?)" ;
 
-		String url = "jdbc:mysql://13.125.118.27/test"; // 본인 ip
+		String url = "jdbc:mysql://13.209.84.120/test"; // 본인 ip
 		String user = "root";
 		String password = "wnddkdwjdqhcjfl1";
 
 		Connection con = null;
 		PreparedStatement stmt = null;
-		ResultSet rs = null;
 
 		try {
 			// 클래스 로딩
@@ -96,12 +79,9 @@ public class JDBC14InsertServlet extends HttpServlet {
 			stmt = con.prepareStatement(sql);
 			
 			// ? (파라미터)에 값 할당
-			stmt.setString(1, customer.getName());
-			stmt.setString(2, customer.getContactName());
-			stmt.setString(3, customer.getAddress());
-			stmt.setString(4, customer.getCity());
-			stmt.setString(5, customer.getPostalCode());
-			stmt.setString(6, customer.getCountry());
+			stmt.setString(1, employee.getLastName());
+			stmt.setString(2, employee.getFirstName());
+			stmt.setString(3, employee.getNotes());
 
 			// 쿼리 실행, 결과(ResultSet) 리턴
 			int cnt = stmt.executeUpdate();
@@ -116,15 +96,6 @@ public class JDBC14InsertServlet extends HttpServlet {
 			e.printStackTrace();
 		} finally {
 			// 연결 닫기
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-
 			if (stmt != null) {
 				try {
 					stmt.close();
@@ -147,21 +118,6 @@ public class JDBC14InsertServlet extends HttpServlet {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
