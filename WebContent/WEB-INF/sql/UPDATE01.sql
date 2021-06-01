@@ -36,6 +36,7 @@ SET
  Country = 'Norway'
 WHERE CustomerID = 32;
 
+SELECT * FROM Employees
 
 
 

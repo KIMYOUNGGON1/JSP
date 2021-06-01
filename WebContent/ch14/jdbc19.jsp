@@ -17,14 +17,13 @@
 </head>
 <body>
 <div class = "container">
-	<form action="" method="post">
-		id : <input type="text" readonly name="id" value="${customer.id }"> <br>
-		name : <input type="text" name="name" value="${customer.name }"> <br>
-		contact name : <input type="text" name="contactName" value="${customer.contactName }"> <br>
-		address : <input type="text" name="address" value="${customer.address }"> <br>
-		city : <input type="text" name="city" value="${customer.city }"> <br>
-		postal code : <input type="text" name="postalCode" value="${customer.postalCode }"> <br>
-		country : <input type="text" name="country" value="${customer.country }"> <br>
+		<form action="" method="post">
+		id : <input type="text" name="id" value="${employee.id }" readonly> <br>
+		Last Name : <input type="text" name="lastName" value="${employee.lastName }"> <br>
+		First Name : <input type="text" name="firstName" value="${employee.firstName }"> <br>
+		Notes : <br>
+		<textarea name="notes" rows="5" ><c:out value="${employee.notes }"/> </textarea>  
+		<br>
 		<input type="submit" value="삭제">
 	</form>
 </div>

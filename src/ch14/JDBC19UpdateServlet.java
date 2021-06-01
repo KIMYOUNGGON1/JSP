@@ -1,27 +1,26 @@
 package ch14;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ch14.bean.Customer;
-import ch14.dao.CustomersDAO;
+import ch14.bean.Employee;
+import ch14.dao.EmployeesDAO;
 
 /**
- * Servlet implementation class JDBC18DeleteServlet
+ * Servlet implementation class JDBC19UpdateServlet
  */
-@WebServlet("/JDBC18DeleteServlet")
-public class JDBC18DeleteServlet extends HttpServlet {
+@WebServlet("/JDBC19UpdateServlet")
+public class JDBC19UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JDBC18DeleteServlet() {
+    public JDBC19UpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +31,12 @@ public class JDBC18DeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		
-		CustomersDAO customersDao = new CustomersDAO();
-	
-		Customer customer = customersDao.getCustomer(Integer.parseInt(id));
-		request.setAttribute("customer", customer);
+		EmployeesDAO employeesDAO = new EmployeesDAO();
 		
-		String path = "/ch14/jdbc18.jsp";
+		Employee employee =  employeesDAO.getEmployee(Integer.parseInt(id));
+		request.setAttribute("employee", employee);
+		
+		String path = "/ch14/jdbc19.jsp";
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
@@ -46,21 +45,11 @@ public class JDBC18DeleteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-		CustomersDAO customersDAO = new CustomersDAO();
+		EmployeesDAO employeesDAO = new EmployeesDAO();
 		
-		customersDAO.deleteCustomer(Integer.parseInt(id));
+		employeesDAO.deleteEmployee(Integer.parseInt(id));
 		
 		doGet(request, response);
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
