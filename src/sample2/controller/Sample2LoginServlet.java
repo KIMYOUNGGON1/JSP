@@ -16,7 +16,7 @@ import sample2.dao.MemberDao;
 /**
  * Servlet implementation class Sample2LoginServlet
  */
-@WebServlet("/sample2Login")
+@WebServlet("/sample2/login")
 public class Sample2LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -48,7 +48,7 @@ public class Sample2LoginServlet extends HttpServlet {
 		MemberDao dao = new MemberDao();
 		Member member = dao.getMember(id);
 		
-		if(member.getPassword().equals(password)) {
+		if(member != null && member.getPassword().equals(password)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("userLogined", member);
 			String path = request.getContextPath() + "/sample2/main";
