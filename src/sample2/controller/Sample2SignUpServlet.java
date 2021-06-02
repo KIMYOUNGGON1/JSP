@@ -59,10 +59,10 @@ public class Sample2SignUpServlet extends HttpServlet {
 		
 		// forward or redirect
 		if(ok) {
-			String path = request.getContextPath() + "/sample2/main";
+			String path = request.getContextPath()+"/sample2/main";
 			response.sendRedirect(path);
 		} else {
-			String path = "/WEB-INF/sample2/singup.jsp";
+			String path = "/WEB-INF/sample2/signup.jsp";
 			request.getRequestDispatcher(path).forward(request, response);
 		}
 		
