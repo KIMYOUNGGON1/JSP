@@ -3,6 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="s2" tagdir="/WEB-INF/tags/sample2" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,17 +15,13 @@
 <body>
 <s2:navbar></s2:navbar>
 <div class = "container">
-	<form action="${pageContext.request.contextPath }/sample2/signup" method="post">
-		id : <br> 
-		<input type="text" name="id"> <br>
-		pw : <br>
-		<input type="password" name="password"> <br>
-		name : <br>
-		<input type="text" name="name"> <br>
-		birth day : <br>
-		<input type="date" name="birth"> <br>
-		
-		<input type="submit" value="가입">	
+	<h1>로그인</h1>
+	<form method="post" action="${pageContext.request.contextPath }/sampl2.login">
+	id <br>
+	<input type="text" name="id"> <br>
+	pw <br>
+	<input type="password" name="password">
+	<input type="submit" value="로그인">
 	</form>
 </div>
 </body>

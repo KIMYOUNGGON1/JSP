@@ -20,6 +20,13 @@ public class MemberDao {
 		this.url = "jdbc:mysql://13.209.84.120/Practice";
 		this.user = "root";
 		this.password = "wnddkdwjdqhcjfl1";
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 
@@ -33,7 +40,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			
 			con = DriverManager.getConnection(url, user, password);
 			pstmt = con.prepareStatement(sql);
 			
@@ -71,7 +78,7 @@ public class MemberDao {
 	}
 
 
-	public List<java.lang.reflect.Member> list() {
+	public List<Member> list() {
 		List<Member> list = new ArrayList<Member>();
 		
 		String sql = "SELECT id, password, name, birth, inserted "
@@ -90,6 +97,7 @@ public class MemberDao {
 				member.setName(rs.getString(3));
 				member.setBirth(rs.getDate(4));
 				member.setInserted(rs.getTimestamp(5));
+				list.add(member);
 			}
 			
 		} catch (Exception e) {
@@ -97,7 +105,7 @@ public class MemberDao {
 		}
 
 		
-		return null;
+		return list;
 	}
 
 }
