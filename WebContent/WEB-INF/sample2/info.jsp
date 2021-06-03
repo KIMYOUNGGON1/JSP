@@ -27,7 +27,7 @@
 			console.log(con);
 			
 			if (con) {
-				$("#fomr2").submit();
+				$("#form2").submit();
 			}
 		});
 	});
