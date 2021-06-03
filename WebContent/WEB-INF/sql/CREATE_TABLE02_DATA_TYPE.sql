@@ -43,6 +43,14 @@ CREATE TABLE MyTable5
     Col2 VARCHAR(5)  -- 가변 자리수
 );
 
+SET sql_mode = 'PAD_CHAR_TO_FULL_LENGTH';
+SELECT * FROM MyTable5;
+-- 'abc  ', 'abc'
+
+SET sql_mode = '';
+SELECT * FROM MyTable5;
+-- 'abc', 'abc'
+
 INSERT INTO MyTable5
 (Col1, Col2)
 VALUES
@@ -55,13 +63,30 @@ VALUES
 
 SELECT * FROM MyTable5;
 
+-- date, datetime, timestamp
+CREATE TABLE MyTable6
+(
+	Col1 DATE,
+    Col2 DATETIME,
+    Col3 TIMESTAMP
+);
+INSERT INTO MyTable6
+(Col1, Col2, Col3)
+VALUES
+('2021-06-02', '2021-06-02 11:07:30', '2021-06-02 11:07:30');
+SELECT * FROM MyTable6;
 
 
+-- exercise 3
+CREATE TABLE Persons
+ (
+  PersonID int,
+  LastName varchar(255),
+  FirstName varchar(255),
+  Address varchar(255),
+  City varchar(255) 
+);
 
-
-
-
-
-
-
--- date, datetime
+-- exercise 4
+DROP TABLE
+ Persons;

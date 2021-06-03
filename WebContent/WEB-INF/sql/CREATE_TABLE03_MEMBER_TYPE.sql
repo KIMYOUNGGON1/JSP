@@ -8,3 +8,5 @@ USE Practice;
     birth DATE,
     inserted TIMESTAMP
  );
+ 
+SELECT * FROM Member;
