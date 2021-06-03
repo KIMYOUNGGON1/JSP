@@ -17,6 +17,19 @@
 			$("#input2, #input3, #input4").removeAttr("readonly");
 			$("#submit1").removeAttr("hidden");
 		});
+		
+		$("#submit2").click(function(e){
+			e.preventDefault();
+			console.log("submit2 clicked....");
+			
+			var con = confirm("탈퇴 하시겠습니까??");
+			
+			console.log(con);
+			
+			if (con) {
+				$("#fomr2").submit();
+			}
+		});
 	});
 </script>
 
@@ -25,8 +38,7 @@
 	<s2:navbar></s2:navbar>
 	<div class="container">
 		<form id="form1"
-			action="${pageContext.request.contextPath }/sample2/modify"
-			method="post">
+			action="${pageContext.request.contextPath }/sample2/modify" method="post">
 			id : <br> 
 			<input id="input1" type="text" name="id"value="${member.id }" readonly> <br> 
 			pw : <br> 
@@ -44,6 +56,13 @@
 			<div>${message }</div>
 		</c:if>
 	</div>
+
+	<div class="container">
+		<form id="form2" action="${pageContext.request.contextPath }/sample2/remove" method="post">
+			<input id="submit2" type="submit" value="탈퇴">
+		</form>
+	</div>	
+
 </body>
 </html>
 
