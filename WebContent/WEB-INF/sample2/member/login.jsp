@@ -17,7 +17,7 @@
 	<div class="container">
 		<h1>로그인</h1>
 		<form method="post"
-			action="${pageContext.request.contextPath }/sample2/login">
+			action="${pageContext.request.contextPath }/sample2/member/login">
 			id <br> <input type="text" name="id"> <br> pw <br>
 			<input type="password" name="password"> <input type="submit"
 				value="로그인">

@@ -14,7 +14,7 @@ import sample2.dao.MemberDao;
 /**
  * Servlet implementation class Sample2InfoServlet
  */
-@WebServlet("/sample2/info")
+@WebServlet("/sample2/member/info")
 public class Sample2InfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
