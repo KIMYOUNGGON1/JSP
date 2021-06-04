@@ -42,7 +42,7 @@ public class LoginFilter implements Filter {
 		HttpSession session = req.getSession(false);
 		
 		if(session != null) {
-			Object obj = session.getAttribute("useLogined");
+			Object obj = session.getAttribute("userLogined");
 			if(obj == null) {
 				String path = req.getContextPath() + "/sample2/member/login";
 				

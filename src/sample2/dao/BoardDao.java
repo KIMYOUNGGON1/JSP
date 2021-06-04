@@ -3,6 +3,7 @@ package sample2.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.util.List;
 
 import org.apache.tomcat.dbcp.dbcp2.DriverManagerConnectionFactory;
 
@@ -51,6 +52,13 @@ public class BoardDao {
 		}
 		
 		return false;
+	}
+
+	public List<Board> list() {
+		String sql = "SELECT id, title, memberId, inserted "
+				+ "FROM Board "
+				+ "ORDER By id DESC ";
+		return null;
 	}
 	
 }
