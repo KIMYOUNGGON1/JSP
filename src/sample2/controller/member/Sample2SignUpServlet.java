@@ -1,4 +1,4 @@
-package sample2.controller;
+package sample2.controller.member;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -31,7 +31,7 @@ public class Sample2SignUpServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "/WEB-INF/sample2/signup.jsp";
+		String path = "/WEB-INF/sample2/member/signup.jsp";
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
@@ -64,7 +64,7 @@ public class Sample2SignUpServlet extends HttpServlet {
 		} else {
 			request.setAttribute("message", "가입 실패");
 			
-			String path = "/WEB-INF/sample2/signup.jsp";
+			String path = "/WEB-INF/sample2/member/signup.jsp";
 			request.getRequestDispatcher(path).forward(request, response);
 		}
 		
