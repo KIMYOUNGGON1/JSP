@@ -19,3 +19,21 @@ WHERE Country = (SELECT Country FROM Customers WHERE CustomerID = 1);
 
 select * FROM Customers;
 SELECT * FROM Suppliers;
+
+-- 1번고객(알프레드)와 다른 나라에 사는 고객들 목록
+SELECT * FROM Customers
+WHERE Country <> (SELECT Country FROM Customers WHERE CustomerID = 1);
+
+SELECT * FROM Customers
+WHERE Country != (SELECT Country FROM Customers WHERE CustomerID = 1);
+
+-- 
+DESC Employees;
+SELECT * FROM Employees;
+
+-- 직원 Fuller 보다 나이가 많은 사람
+SELECT * FROM Employees
+WHERE BirthDate < '1952-02-19';
+
+SELECT * FROM Employees
+WHERE BirthDate < (SELECT BirthDate FROM Employees WHERE EmployeeID = 2);
