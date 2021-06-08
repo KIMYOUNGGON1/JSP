@@ -1,6 +1,7 @@
 package sample2.controller.member;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import sample2.bean.Member;
-import sample2.dao.MemberDao;
+import sample2.service.member.MemberRemoveService;
 
 /**
  * Servlet implementation class Sample2RemoveServlet
@@ -17,6 +18,8 @@ import sample2.dao.MemberDao;
 @WebServlet("/sample2/member/remove")
 public class Sample2RemoveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private MemberRemoveService service = null;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -24,6 +27,13 @@ public class Sample2RemoveServlet extends HttpServlet {
     public Sample2RemoveServlet() {
         super();
         // TODO Auto-generated constructor stub
+    }
+    
+    @Override
+    public void init() throws ServletException {
+    	// TODO Auto-generated method stub
+    	super.init();
+    	this.service = new MemberRemoveService();
     }
 
 	/**
@@ -41,8 +51,7 @@ public class Sample2RemoveServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("userLogined");
 		
-		MemberDao dao = new MemberDao();
-		dao.remove(member.getId());
+		this.service.remove();
 		
 		session.invalidate();
 		
@@ -51,3 +60,12 @@ public class Sample2RemoveServlet extends HttpServlet {
 	}
 
 }
+
+
+
+
+
+
+
+
+
