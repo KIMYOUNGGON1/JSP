@@ -17,10 +17,10 @@
 <div class="container">
 	<h1>${board.boardId }번 글 보기</h1>
 	제목 : <br>
-	<input type="text" value="${board.title }" readonly>
+	<input id="input1" type="text" value="${board.title }" readonly>
 	<br>
 	본문 : <br>
-	<textarea readonly>${board.body }</textarea>
+	<textarea id="textarea1" readonly>${board.body }</textarea>
 	<br>
 	작성자 : <br>
 	<input type="text" value="${board.memberName }" readonly>
@@ -28,6 +28,18 @@
 	작성시간 : <br>
 	<input type="text" value="${board.timeAgo }" readonly>
 	
+	<c:if test="${sessionScope.userLogined.id == board.memberId }">
+		<script>
+			$(document).ready(function(){
+				$("#button1").click(function() {
+					$("#submit1").removeAttr("hidden");
+					$("#input1, #textarea1").removeAttr("readonly");
+				});
+			});
+		</script>
+		<button id="button1" type="button">수정</button>
+		<input id="submit1" hidden type="submit" value="전송">
+	</c:if>
 	
 </div>
 </body>
