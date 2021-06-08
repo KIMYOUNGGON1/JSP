@@ -23,9 +23,9 @@
 				value="로그인">
 		</form>
 
-		<c:if test="${not empty message }">
-			<div>${message }</div>
-		</c:if>
+		
+<s2:message>
+</s2:message>
 	</div>
 </body>
 </html>
