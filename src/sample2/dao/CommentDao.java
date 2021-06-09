@@ -72,6 +72,42 @@ public class CommentDao {
 		
 		return list;
 	}
+
+	public void modify(Comment comment, Connection con) {
+		String sql = "UPDATE Comment "
+				+ "   SET comment = ? "
+				+ "   WHERE id = ? ";
+		
+		try (
+			PreparedStatement pstmt = con.prepareStatement(sql);
+				){
+			pstmt.setString(1, comment.getComment());
+			pstmt.setInt(2, comment.getId());
+			
+			pstmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			 e.printStackTrace();
+		}
+		
+	}
+
+	public void remove(int id, Connection con) {
+		String sql = "DELETE FROM Comment WHERE id = ?";
+		
+		try (
+			PreparedStatement pstmt = con.prepareStatement(sql);
+				){
+			
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 }
 
