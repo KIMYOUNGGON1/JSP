@@ -12,3 +12,5 @@ CREATE TABLE Comment
 );
 
 DESC Comment;
+
+SELECT * FROM Comment;
