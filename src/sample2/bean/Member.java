@@ -8,7 +8,23 @@ public class Member {
 	private String password;
 	private String name;
 	private Date birth;
+	private int numberOfBoard;
+	private int numberOfComment;
 	private Timestamp inserted;
+	
+	public int getNumberOfBoard() {
+		return numberOfBoard;
+	}
+	public void setNumberOfBoard(int numberOfBoard) {
+		this.numberOfBoard = numberOfBoard;
+	}
+	public int getNumberOfComment() {
+		return numberOfComment;
+	}
+	public void setNumberOfComment(int numverOfComment) {
+		this.numberOfComment = numverOfComment;
+	}
+	
 	
 	
 	public Timestamp getInserted() {
