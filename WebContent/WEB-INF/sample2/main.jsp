@@ -21,7 +21,8 @@
 	
 	
 <div class="jumbotron">
-  <h1 class="display-4">환영합니다.</h1>
+	
+  <h1 class="display-4"><i class="fab fa-java"></i>환영합니다.</h1>
   <p class="lead">기본 Servlet / JSP로 만든 회원, 게시판 어플리케이션입니다.</p>
   <hr class="my-4">
   <pre>프로그래밍을 처음 배워서 만들어 본 게시판 입니다. 회원가입부터 시작해보세요. 
